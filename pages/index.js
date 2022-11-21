@@ -19,6 +19,7 @@ export default function Home() {
         <p>Model</p><input></input>
         <p>Year</p><input></input>
         <p>Distance</p><input></input>
+        <p>Lets keep going here guuuuuys</p>
       
         <button>Calculate</button>
       </main>
