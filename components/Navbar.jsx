@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 
 function Navbar() {
   const [nav, setNav] = useState(false)
@@ -31,49 +30,18 @@ function Navbar() {
     >
       <div className=' max-w-[1240px] m-auto flex justify-between items-center p-4 text-white'>
         <Link href='/'>
-          <h1 style={{ color: `${textColor}` }} className='font-bold text-4xl'>
-            Navbar
+          <h1 style={{ color: `${textColor}` }} className='font-bold text-5xl'>
+            C0² Calculator
           </h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className='hidden sm:flex'>
-          <li className='p-4'>
-            <Link href='/'>Home</Link>
+          <li className='p-5 text-2xl'>
+            <Link href='/Calculate'>Calculate</Link>
           </li>
-          <li className='p-4'>
-            <Link href='/#calculatorInput'>Calculate</Link>
-          </li>
-          <li className='p-4'>
+          <li className='p-5 text-2xl'>
             <Link href='/contact'>Contact</Link>
           </li>
         </ul>
-        {/* Mobile button */}
-        <div onClick={handleNav} className='block sm:hidden z-10'>
-          {nav ? (
-            <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
-          ) : (
-            <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
-          )}
-        </div>
-
-        <div
-          className={
-            nav
-              ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in-duration-300"
-              : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in-duration-300"
-          }
-        >
-          <ul>
-            <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/'>Home</Link>
-            </li>
-            <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/#gallery'>Calculate</Link>
-            </li>
-            <li className='p-4 text-4xl hover:text-gray-500'>
-              <Link href='/contact'>Contact</Link>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   )
