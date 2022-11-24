@@ -1,39 +1,27 @@
 import Head from "next/head"
 import Alpha from "../components/Alpha"
+import CalculatorInput from "../components/CalculatorInput"
 
-export default function Home() {
+const defaultEndpoint = "https://localhost:7114/api/Car"
+
+export const getServerSideProps = async () => {
+  const data = await fetch(defaultEndpoint)
+  const json = await data.json()
+  return {
+    props: { cars: json },
+  }
+} // getStaticProps
+
+export default function Home({ cars }) {
+  console.log("data", cars)
   return (
     <div>
       <Head>
-        <title>Carbon-calculator</title>
+        <title>C0² Calculator</title>
       </Head>
 
       <Alpha />
-      <calculatorInput />
-      {/* <main className={styles.main}>
-        <h1 className={styles.title}>
-          <a>Carbon Calculator</a>
-        </h1>
-        <box className='card'>
-          <p>Car-brand</p>
-          <input></input>
-          <p>Model</p>
-          <input></input>
-          <p>Engine</p>
-          <input></input>
-          <p>Year</p>
-          <input></input>
-          <p>Distance</p>
-          <input></input>
-          <p>Lets keep going here guuuuuys</p>
-
-          <button>Calculate</button>
-        </box>
-      </main>
-
-      <footer className={styles.footer}>
-        <h1>Dancer</h1>
-      </footer> */}
+      <CalculatorInput />
     </div>
   )
 }
