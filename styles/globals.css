@@ -4,9 +4,18 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: "Amiko", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
+/* ///https://wallpapercave.com/wp/wp9012018.jpg */
 .custom-img {
-  background-image: url("https://wallpapercave.com/wp/wp9012018.jpg");
+  background-image: url("https://images.unsplash.com/photo-1634176866089-b633f4aec882?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80");
+}
+.custom-img-2 {
+  background-image: url("https://images.unsplash.com/photo-1634176866089-b633f4aec882?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80");
+}
+.custom-img-3 {
+  background-image: url("https://images.unsplash.com/photo-1600091441670-09ebcb257667?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80");
+}
+.custom-img-4{
+  background-image: url("https://www.visma.com/blog/wp-content/uploads/sites/46/2022/03/sustion_blog1.jpg")
 }
