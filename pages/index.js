@@ -4,6 +4,7 @@ import CalculatorInput from "../components/CalculatorInput"
 import Contact from "../components/Contact"
 import Result from "../components/Result"
 import Info from "../components/Info"
+import { useState } from "react"
 
 export async function getStaticProps() {
   const defaultEndpoint = "https://localhost:7114/api/Car"
@@ -16,22 +17,24 @@ export async function getStaticProps() {
   }
 
 export default function Home({ cars }) {
+  const [result, setResult] = useState(0);
 
+ console.log("result in index", result) // this is an array of car
  console.log("cars", cars) // this is an array of car
   return (
     <div className="snap-y snap-mandatory overflow-auto w-screen">
 
         <Head>
-          <title>C0² Calculator</title>
+          <title>CO² Calculator</title>
         </Head>
         <div className="snap-start" id="first-section">
           <Alpha />
         </div>
         <div className="snap-start" id="second-section">
-          <CalculatorInput passingCarsDown={cars}/>
+          <CalculatorInput passingCarsDown={cars} setResult={setResult}/>
         </div>
         <div className="snap-start" id="third-section">
-          <Result />
+          <Result result={result} />
         </div>  
         <div className="snap-start" id="fourth-section">
           <Info />

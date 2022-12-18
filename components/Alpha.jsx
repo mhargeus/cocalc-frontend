@@ -9,7 +9,7 @@ const Alpha = () => {
       <div className="z-1+ absolute top-0 left-0 right-0 bottom-0  z-[2]" />
       <div className="p-5 text-white z-[2]  mt-[-10rem]">
         <h2 className="text-5xl font-bold mb-5">
-          C0² calculator - measure your impact on our world
+          CO² calculator - measure your impact on our world
         </h2>
         <CalcButton />
       </div>

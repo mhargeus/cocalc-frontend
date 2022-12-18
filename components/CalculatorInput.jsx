@@ -1,16 +1,13 @@
 import Link from "next/link";
 import React, { useState, useEffect, use } from "react";
 
-const CalculatorInput = ({ passingCarsDown }) => {
-  console.log(passingCarsDown, "carsincalcinput");
-
+const CalculatorInput = ({ passingCarsDown, setResult }) => {
   const [display, setDisplay] = useState(false);
   const [carArray, setCarArray] = useState(passingCarsDown);
   const [search, setSearch] = useState("");
-  const [chosenCar, setChosenCar] = useState("");
+  const [chosenCar, setChosenCar] = useState(null);
   const [distance, setDistance] = useState("");
   const [automaticInput, setAutomaticInput] = useState(true);
-  const [result, setResult] = useState(0);
 
   const [manualConsumption, setManualConsumption] = useState(0);
   const [manualDistance, setManualDistance] = useState(0);
@@ -21,26 +18,25 @@ const CalculatorInput = ({ passingCarsDown }) => {
   useEffect(() => {
     setManualResult((manualConsumption / 100) * 2350 * manualDistance);
   }, [manualConsumption, manualDistance]);
-  console.log(manualResult, "manualResult");
 
   useEffect(() => {
-    setAutomaticResult(chosenCar.wltp * distance), [chosenCar, distance];
-  });
+    if (chosenCar !== null) {
+      setAutomaticResult(chosenCar.wltp * distance);
+    }
+  }, [chosenCar, distance]);
 
-  useEffect(() => {
-    setChosenCar(search);
-  }, [search]);
   const distanceChangeHandler = (e) => {
     setDistance(e.target.value);
   };
 
   const setCar = (car) => {
-    setSearch(car);
+    setChosenCar(car);
+    setSearch(
+      car.brand + " " + car.model + " " + car.year + " " + car.engine + " ",
+      car.wltp
+    );
     setDisplay(false);
   };
-  console.log(setCar.wltp, "setCar.wltp");
-
-  console.log(+" setSearch");
 
   if (automaticInput) {
     return (
@@ -51,7 +47,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
               <div className="px-6 py-4">
                 <ul className="flex-col space-y-4">
                   <h1 className="text-3xl">Carbon Calculator </h1>
-                  <p className="bg-white/50 text-center">Car-brand</p>
+                  <p className="bg-black/70 text-center">Car-brand</p>
                   <input
                     onClick={() => setDisplay(!display)}
                     value={search}
@@ -69,22 +65,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
                         )
                         .map((v, i) => {
                           return (
-                            <div
-                              onClick={() =>
-                                setCar(
-                                  v.brand +
-                                    " " +
-                                    v.model +
-                                    " " +
-                                    v.year +
-                                    " " +
-                                    v.engine +
-                                    " ",
-                                  v.wltp
-                                )
-                              }
-                              key={i}
-                            >
+                            <div onClick={() => setCar(v)} key={i}>
                               <span className="bg-white/30">
                                 {v.brand +
                                   " " +
@@ -98,7 +79,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
                           );
                         })}
                   </div>
-                  <p className="bg-white/50 text-center">
+                  <p className="bg-black/70 text-center">
                     Distance in kilometers
                   </p>
                   <input
@@ -153,7 +134,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
               <div className="px-6 py-4">
                 <ul className="flex-col space-y-4">
                   <h1 className="text-3xl">Carbon Calculator </h1>
-                  <p className="bg-white/50 text-center">
+                  <p className="bg-black/70 text-center">
                     Petrolconsumption in liter/100 km
                   </p>
                   <input
@@ -164,7 +145,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
                     placeholder="ex: 7"
                   />
                   <div></div>
-                  <p className="bg-white/50 text-center">
+                  <p className="bg-black/70 text-center">
                     Distance in kilometers
                   </p>
                   <input
@@ -192,7 +173,7 @@ const CalculatorInput = ({ passingCarsDown }) => {
                   </div>
                   <div className="mt-5  items-center justify-center ">
                     <button
-                      onClick={() => setAutomaticInput(true)}
+                      onClick={() => setAutomaticInput(!automaticInput)}
                       type="button"
                       class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                     >
