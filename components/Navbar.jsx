@@ -37,7 +37,7 @@ function Navbar() {
             style={{ color: `${textColorTwo}` }}
             className="font-bold text-5xl"
           >
-            C0² Calculator
+            CO² Calculator
           </h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
@@ -48,9 +48,10 @@ function Navbar() {
           </li>
           <li className="p-5 text-2xl">
             <Link scroll={false} href="#fourth-section">
-              Info
+              About us
             </Link>
           </li>
+
           <li className="p-5 text-2xl">
             <Link scroll={false} href="#fifth-section">
               Contact
